@@ -2,24 +2,32 @@
 	<head>
 		<title>Answer Randomizer</title>
 		<link rel="stylesheet" type="text/css" href="./styles.css">
+		<link rel="stylesheet" type="text/css" href="./tachyons.min.css">
 	</head>
 	
-	<body>
-		<div id="choices">
-			<div id="choices_list" class="container"></div>
-			<input id="new_choice" type="text">
-			<button id="choices_button">Add a choice</button>
+	<body class="sans-serif debug debug-grid-16">
+		<div class="w-80 center mt4">
+			<h4>Answer Randomizer</h4>
+			<div class="center" id="choices">
+				<div id="choices_list" class="container"></div>
+				<input class="center w-80 w-20-ns" id="new_choice" type="text"><br />
+				<button class="center" id="choices_button">Add a choice</button>
+			</div>
+
+			<br />
+			
+			<label for="n_questions">Number of questions: </label><br />
+			<input id="n_questions" type="number" min="1" step="1" value="1">
+			
+			<br />
+			
+			<label for="starting_q">Starting at: </label><br />
+			<input id="starting_q" type="number" min="1" step="1" value="1">
+			
+			<button id="generate">Generate randomized answers</button>
+			
+			<table id="answers_list"></table>
 		</div>
-		
-		<label for="n_questions">Number of questions: </label>
-		<input id="n_questions" type="number" min="1" step="1" value="1">
-		
-		<label for="starting_q">Starting at: </label>
-		<input id="starting_q" type="number" min="1" step="1" value="1">
-		
-		<button id="generate">Generate randomized answers</button>
-		
-		<table id="answers_list"></table>
 	</body>
 	<script type="text/javascript">
 		var choices = [];
