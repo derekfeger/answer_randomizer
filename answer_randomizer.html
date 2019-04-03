@@ -1,0 +1,84 @@
+<html>
+	<head>
+		<title>Answer Randomizer</title>
+		<link rel="stylesheet" type="text/css" href="./styles.css">
+	</head>
+	
+	<body>
+		<div id="choices">
+			<div id="choices_list" class="container"></div>
+			<input id="new_choice" type="text">
+			<button id="choices_button">Add a choice</button>
+		</div>
+		
+		<label for="n_questions">Number of questions: </label>
+		<input id="n_questions" type="number" min="1" step="1" value="1">
+		
+		<label for="starting_q">Starting at: </label>
+		<input id="starting_q" type="number" min="1" step="1" value="1">
+		
+		<button id="generate">Generate randomized answers</button>
+		
+		<table id="answers_list"></table>
+	</body>
+	<script type="text/javascript">
+		var choices = [];
+		
+		//Selections of page elements
+		var choicesButton = document.getElementById('choices_button');
+		var choicesList = document.getElementById('choices_list');
+		var newChoiceInput = document.getElementById('new_choice');
+		var nQuestions = document.getElementById('n_questions');
+		var qStart = document.getElementById('starting_q');
+		var generateButton = document.getElementById('generate');
+		var answersList = document.getElementById('answers_list');
+		
+		//Event Listeners
+		choicesButton.addEventListener('click', addChoice);
+		newChoiceInput.addEventListener('keyup', addOnEnter);
+		generateButton.addEventListener('click', generateAnswers);
+		
+		function addOnEnter(e) {
+			if (e.key === 'Enter') {
+				addChoice();
+			}
+		}
+		
+		function addChoice() {
+			newChoice = newChoiceInput.value;
+			
+			//Update screen with new choice
+			newItem = '<p class="choice_item">' + newChoice + '</p>';
+			choicesList.innerHTML += newItem;
+			
+			//Push new choice to array
+			choices.push(newChoice)
+			
+			//Reset the input
+			newChoiceInput.value = ''
+		}
+		
+		function generateAnswers() {
+			//Clear answers list
+			answersList.innerHTML = '<tr><th>Question</th><th>Answer</th></tr>'
+			
+			//Collect results
+			results = [];
+			for (var i = 0; i < nQuestions.value; i++) {
+				pick = choices[Math.floor(Math.random() * choices.length)];
+				results.push(pick);
+			}
+			
+			//Publish results to page
+			for (var i =0; i < results.length; i++) {
+				result = results[i];
+				q_num = parseInt(qStart.value) + i
+				resultObject = '<tr><td>' + q_num + '</td><td>' + result + '</td></tr>';
+				answersList.innerHTML += resultObject;
+			}
+		}
+		
+		
+	</script>
+</html>
+
