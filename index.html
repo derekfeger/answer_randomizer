@@ -24,7 +24,7 @@
 			<div class="center mb3" id="choices">
 				<div class="dib flex flex-wrap items-center justify-center mt0" id="choices_list"></div>
 				<input class="db center w-50 w-20-ns tc f3 f2-ns mb2 ba bw1 br2 pa2" id="new_choice" type="text">
-				<a class="db mv4 center tc f4 f3-ns link grow ba br-pill bw1 ph2 pv2 black w-80 w-50-ns" id="choices_button">Add a Choice</a>
+				<a class="db mv4 center tc f4 f3-ns link grow ba br-pill bw1 ph2 pv2 black w-80 w-20-ns" id="choices_button">Add a Choice</a>
 			</div>
 			
 			<div class="db mv3">
@@ -37,10 +37,19 @@
 				<input class="db center f3 f2-ns tc w-50 w-20-ns ba bw1 br2 pa2" id="starting_q" type="number" min="1" step="1" value="1" pattern="\d*" />
 			</div>
 
-			<a class="db mv4 center tc f4 f3-ns link grow ba br-pill bw1 ph2 pv2 black w-80 w-50-ns" id="generate" href="#results">Generate Answers</a>
+			<a class="db mv4 center tc f4 f3-ns link grow ba br-pill bw1 ph2 pv2 black w-80 w-20-ns" id="generate" href="#results">Generate Answers</a>
 			
+			
+
 			<div id="results">
-				<table id="answers_list"></table>
+				<table class="f4 w-100 w-50-ns center" cellspacing="0">
+					<thead id="tableheader">
+
+					</thead>
+					<tbody class="lh-copy" id="answers_list">
+						
+					</tbody>
+				</table>
 			</div>
 		</div>
 	</body>
@@ -54,6 +63,7 @@
 		var nQuestions = document.getElementById('n_questions');
 		var qStart = document.getElementById('starting_q');
 		var generateButton = document.getElementById('generate');
+		var tableHeader = document.getElementById('tableheader');
 		var answersList = document.getElementById('answers_list');
 		
 		//Event Listeners
@@ -83,8 +93,9 @@
 		
 		function generateAnswers() {
 			//Clear answers list
-			answersList.innerHTML = '<tr><th>Question</th><th>Answer</th></tr>'
-			
+			tableHeader.innerHTML = '<tr class="stripe-dark pa3"><th class="tl pa3 bg-white">Question</th><th class="tl pa3 bg-white">Answer</th></tr>'
+			answersList.innerHTML = ''
+
 			//Collect results
 			results = [];
 			for (var i = 0; i < nQuestions.value; i++) {
@@ -96,7 +107,7 @@
 			for (var i =0; i < results.length; i++) {
 				result = results[i];
 				q_num = parseInt(qStart.value) + i
-				resultObject = '<tr><td>' + q_num + '</td><td>' + result + '</td></tr>';
+				resultObject = '<tr class="stripe-dark"><td class="pa3">' + q_num + '</td><td class="pa3">' + result + '</td></tr>';
 				answersList.innerHTML += resultObject;
 			}
 		}
