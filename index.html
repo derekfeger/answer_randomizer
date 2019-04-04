@@ -23,23 +23,25 @@
 			<h1 class="f1 f-subheadline-ns tc mb3">Answer Randomizer</h1>
 			<div class="center mb3" id="choices">
 				<div class="dib flex flex-wrap items-center justify-center mt0" id="choices_list"></div>
-				<input class="db center w-80 w-20-ns tc f3 f2-ns mb2 ba bw1 pa2" id="new_choice" type="text">
-				<a class="db mv4 center tc f2 link grow ba br-pill bw1 ph3 pv2 black w-80 w-50-ns" id="choices_button">Add a Choice</a>
+				<input class="db center w-50 w-20-ns tc f3 f2-ns mb2 ba bw1 br2 pa2" id="new_choice" type="text">
+				<a class="db mv4 center tc f4 f3-ns link grow ba br-pill bw1 ph2 pv2 black w-80 w-50-ns" id="choices_button">Add a Choice</a>
 			</div>
 			
 			<div class="db mv3">
-				<label class="db tc f2 mb2" for="n_questions">Number of Questions</label>
-				<input class="db center f2 f1-ns tc w-80 w-20-ns ba bw1 pa2" id="n_questions" type="number" min="1" step="1" value="1" pattern="\d*" />
+				<label class="db tc f3 f2-ns mb2" for="n_questions">Number of Questions</label>
+				<input class="db center f3 f2-ns tc w-50 w-20-ns ba bw1 br2 pa2" id="n_questions" type="number" min="1" step="1" value="1" pattern="\d*" />
 			</div>
 			
 			<div class="db center mv3">
-				<label class="db tc f2 mb2" for="starting_q">Starting Question</label>
-				<input class="db center f2 f1-ns tc w-80 w-20-ns ba bw1 pa2" id="starting_q" type="number" min="1" step="1" value="1" pattern="\d*" />
+				<label class="db tc f3 f2-ns mb2" for="starting_q">Starting Question</label>
+				<input class="db center f3 f2-ns tc w-50 w-20-ns ba bw1 br2 pa2" id="starting_q" type="number" min="1" step="1" value="1" pattern="\d*" />
 			</div>
 
-			<a class="db mv4 center tc f2 link grow ba br-pill bw1 ph3 pv2 black w-80 w-50-ns" id="generate" href="#">Generate Answers</a>
+			<a class="db mv4 center tc f4 f3-ns link grow ba br-pill bw1 ph2 pv2 black w-80 w-50-ns" id="generate" href="#results">Generate Answers</a>
 			
-			<table id="answers_list"></table>
+			<div id="results">
+				<table id="answers_list"></table>
+			</div>
 		</div>
 	</body>
 	<script type="text/javascript">
