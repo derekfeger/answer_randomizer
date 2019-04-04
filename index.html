@@ -74,6 +74,10 @@
 			
 
 			<div id="results">
+
+				<div id="chart">
+					There will be a chart here
+				</div>
 				<table class="f4 w-100 w-50-ns center" cellspacing="0">
 					<thead id="tableheader">
 
@@ -98,6 +102,7 @@
 		var generateButton = document.getElementById('generate');
 		var tableHeader = document.getElementById('tableheader');
 		var answersList = document.getElementById('answers_list');
+		var resultsArray = [];
 		
 		//Event Listeners
 		choicesButton.addEventListener('click', addChoice);
@@ -111,10 +116,10 @@
 		}
 		
 		function addChoice() {
-			newChoice = newChoiceInput.value;
+			var newChoice = newChoiceInput.value;
 			
 			//Update screen with new choice
-			newItem = '<p class="choice_item choice_item-ns">' + newChoice + '</p>';
+			var newItem = '<p class="choice_item choice_item-ns">' + newChoice + '</p>';
 			choicesList.innerHTML += newItem;
 			
 			//Push new choice to array
@@ -128,19 +133,19 @@
 			//Clear answers list
 			tableHeader.innerHTML = '<tr class="pa3"><th class="near-black tl ph3 pt3 pb1 bb bw2">Question</th><th class="near-black tl ph3 pt3 pb1 bb bw2">Answer</th></tr>'
 			answersList.innerHTML = ''
+			resultsArray = [];
 
 			//Collect results
-			results = [];
 			for (var i = 0; i < nQuestions.value; i++) {
-				pick = choices[Math.floor(Math.random() * choices.length)];
-				results.push(pick);
+				var pick = choices[Math.floor(Math.random() * choices.length)];
+				resultsArray.push(pick);
 			}
 			
 			//Publish results to page
-			for (var i =0; i < results.length; i++) {
-				result = results[i];
-				q_num = parseInt(qStart.value) + i
-				resultObject = '<tr class="striped--near-white"><td class="pa3">' + q_num + '</td><td class="pa3">' + result + '</td></tr>';
+			for (var i = 0; i < resultsArray.length; i++) {
+				var result = resultsArray[i];
+				var q_num = parseInt(qStart.value) + i
+				var resultObject = '<tr class="striped--near-white"><td class="pa3">' + q_num + '</td><td class="pa3">' + result + '</td></tr>';
 				answersList.innerHTML += resultObject;
 			}
 		}
