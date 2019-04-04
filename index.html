@@ -21,22 +21,22 @@
 		<div class="w-80 center mt4">
 			<h1 class="f-subheadline tc mb3">Answer Randomizer</h1>
 			<div class="center mb3" id="choices">
-				<div class="db flex flex-wrap items-center justify-center" id="choices_list"></div>
-				<input class="db center w-80 w-20-ns tc f2 mb2" id="new_choice" type="text">
-				<button class="db center f2" id="choices_button">Add a choice</button>
+				<div class="dib flex flex-wrap items-center justify-center mt0" id="choices_list"></div>
+				<input class="db center w-80 w-20-ns tc f2 mb2 ba bw1 pa2" id="new_choice" type="text">
+				<a class="db mv4 center tc f2 link grow ba br-pill bw1 ph3 pv2 black w-80 w-50-ns" id="choices_button">Add a Choice</a>
 			</div>
 			
 			<div class="db mv3">
 				<label class="db tc f1 mb2" for="n_questions">Number of Questions</label>
-				<input class="db center f1 tc" id="n_questions" type="number" min="1" step="1" value="1">
+				<input class="db center f1 tc w-80 w-20-ns ba bw1 pa2" id="n_questions" type="number" min="1" step="1" value="1" pattern="\d*" />
 			</div>
 			
 			<div class="db center mv3">
 				<label class="db tc f1 mb2" for="starting_q">Starting Question</label>
-				<input class="db center f1 tc" id="starting_q" type="number" min="1" step="1" value="1">
+				<input class="db center f1 tc w-80 w-20-ns ba bw1 pa2" id="starting_q" type="number" min="1" step="1" value="1" pattern="\d*" />
 			</div>
 
-			<button class="db center f2" id="generate">Generate randomized answers</button>
+			<a class="db mv4 center tc f2 link grow ba br-pill bw1 ph3 pv2 black w-80 w-50-ns" id="generate" href="#">Generate Answers</a>
 			
 			<table id="answers_list"></table>
 		</div>
