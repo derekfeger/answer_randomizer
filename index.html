@@ -4,9 +4,19 @@
 		<meta name="viewport" content="initial-scale=1, maximum-scale=1">
 		<link rel="stylesheet" type="text/css" href="./tachyons.min.css">
 		<style>
+			input[type=number]::-webkit-inner-spin-button, 
+			input[type=number]::-webkit-outer-spin-button { 
+			  -webkit-appearance: none; 
+			  margin: 0; 
+			}
+
+			input[type=number] {
+ 			   -moz-appearance:textfield; /* Firefox */
+			}
+
 			.choice_item {
 				margin-left: 5px;
-				border-color: 5E2CA5;
+				border-color: #5E2CA5;
 				border-style: solid;
 				border-width: 2px;
 				background-color: #FFDFDF;
@@ -16,9 +26,27 @@
 				font-weight: bold;
 				text-align: center;
 				line-height: 4rem;
-				font-size: 1rem;
-				
+				font-size: 1rem;				
 			}
+
+			@media screen and (min-width: 30em) {
+ 			 .choice_item-ns {
+				margin-left: 5px;
+    			border-color: #5E2CA5;
+    			border-style: solid;
+    			border-width: 2px;
+    			background-color: #FFDFDF;
+    			color: #5E2CA5;
+    			width: 6rem;
+    			height: 6rem;
+    			font-weight: bold;
+    			text-align: center;
+    			line-height: 6rem;
+    			font-size: 2rem;
+  			}
+}
+
+
 		</style>
 	</head>
 	
@@ -28,7 +56,7 @@
 			<div class="center mb3" id="choices">
 				<div class="dib flex flex-wrap items-center justify-center" id="choices_list"></div>
 				<input class="db near-black bg-near-white b--near-black center w-50 w-20-ns tc f3 f2-ns mb3 mt2 bw1 br2 pa2" id="new_choice" type="text">
-				<a class="purple db mb4 center tc f4 f3-ns link grow ba br-pill bw1 ph2 pv2 black w-80 w-20-ns" id="choices_button" href="#choices_button">Add a Choice</a>
+				<a class="purple db mb4 center tc f4 f3-ns link grow ba br-pill bw1 ph2 pv2 black w-80 w-30-ns" id="choices_button" href="#choices_button">Add a Choice</a>
 			</div>
 			
 			<div class="db mv3">
@@ -85,7 +113,7 @@
 			newChoice = newChoiceInput.value;
 			
 			//Update screen with new choice
-			newItem = '<p class="choice_item">' + newChoice + '</p>';
+			newItem = '<p class="choice_item choice_item-ns">' + newChoice + '</p>';
 			choicesList.innerHTML += newItem;
 			
 			//Push new choice to array
