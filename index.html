@@ -24,21 +24,21 @@
 	
 	<body class="bg-washed-red sans-serif w-100">
 		<div class="w-80 center mt2">
-			<h1 class="purple f1 f-subheadline-ns tc mb3">Answer Randomizer</h1>
+			<h1 class="near-black f1 f-subheadline-ns tc mb3">Answer Randomizer</h1>
 			<div class="center mb3" id="choices">
 				<div class="dib flex flex-wrap items-center justify-center" id="choices_list"></div>
-				<input class="db bg-washed-red center w-50 w-20-ns tc f3 f2-ns mb3 mt2 ba bw1 br2 pa2" id="new_choice" type="text">
+				<input class="db near-black bg-washed-red b--purple center w-50 w-20-ns tc f3 f2-ns mb3 mt2 ba bw1 br2 pa2" id="new_choice" type="text">
 				<a class="purple db mb4 center tc f4 f3-ns link grow ba br-pill bw1 ph2 pv2 black w-80 w-20-ns" id="choices_button" href="#choices_button">Add a Choice</a>
 			</div>
 			
 			<div class="db mv3">
-				<label class="db tc f3 f2-ns mb2" for="n_questions">Number of Questions</label>
-				<input class="bg-washed-red db center f3 f2-ns tc w-50 w-20-ns ba bw1 br2 pa2" id="n_questions" type="number" min="1" step="1" value="1" pattern="\d*" />
+				<label class="near-black db tc f3 f2-ns mb2" for="n_questions">Number of Questions</label>
+				<input class="near-black bg-washed-red b--purple db center f3 f2-ns tc w-50 w-20-ns ba bw1 br2 pa2" id="n_questions" type="number" min="1" step="1" value="1" pattern="\d*" />
 			</div>
 			
 			<div class="db center mv3">
-				<label class="db tc f3 f2-ns mb2" for="starting_q">Starting Question</label>
-				<input class="bg-washed-red db center f3 f2-ns tc w-50 w-20-ns ba bw1 br2 pa2" id="starting_q" type="number" min="1" step="1" value="1" pattern="\d*" />
+				<label class="near-black db tc f3 f2-ns mb2" for="starting_q">Starting Question</label>
+				<input class="near-black bg-washed-red b--purple db center f3 f2-ns tc w-50 w-20-ns ba bw1 br2 pa2" id="starting_q" type="number" min="1" step="1" value="1" pattern="\d*" />
 			</div>
 
 			<a class="purple db mv4 center tc f4 f3-ns link grow ba br-pill bw1 ph2 pv2 black w-80 w-30-ns" id="generate" href="#results">Generate Answers</a>
@@ -97,7 +97,7 @@
 		
 		function generateAnswers() {
 			//Clear answers list
-			tableHeader.innerHTML = '<tr class="pa3"><th class="tl ph3 pt3 pb1 bb bw2">Question</th><th class="tl ph3 pt3 pb1 bb bw2">Answer</th></tr>'
+			tableHeader.innerHTML = '<tr class="pa3"><th class="near-black tl ph3 pt3 pb1 bb bw2">Question</th><th class="near-black tl ph3 pt3 pb1 bb bw2">Answer</th></tr>'
 			answersList.innerHTML = ''
 
 			//Collect results
