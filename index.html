@@ -6,7 +6,7 @@
 		<style>
 			.choice_item {
 				margin-left: 5px;
-				background: #ddd;
+				background: #eee;
 				width: 4rem;
 				height: 4rem;
 				font-weight: bold;
@@ -93,7 +93,7 @@
 		
 		function generateAnswers() {
 			//Clear answers list
-			tableHeader.innerHTML = '<tr class="stripe-dark pa3"><th class="tl pa3 bg-white">Question</th><th class="tl pa3 bg-white">Answer</th></tr>'
+			tableHeader.innerHTML = '<tr class="striped--light-gray pa3"><th class="tl pa3 bg-white">Question</th><th class="tl pa3 bg-white">Answer</th></tr>'
 			answersList.innerHTML = ''
 
 			//Collect results
@@ -107,7 +107,7 @@
 			for (var i =0; i < results.length; i++) {
 				result = results[i];
 				q_num = parseInt(qStart.value) + i
-				resultObject = '<tr class="stripe-dark"><td class="pa3">' + q_num + '</td><td class="pa3">' + result + '</td></tr>';
+				resultObject = '<tr class="striped--light-gray"><td class="pa3">' + q_num + '</td><td class="pa3">' + result + '</td></tr>';
 				answersList.innerHTML += resultObject;
 			}
 		}
