@@ -50,7 +50,7 @@
 		</style>
 	</head>
 	
-	<body class="bg-washed-red sans-serif w-100">
+	<body class="bg-washed-red sans-serif w-100 debug-grid">
 		<div class="w-80 center mt2">
 			<a class="no-underline" href="http://derekfeger.github.io/answer_randomizer"><h1 class="near-black f1 f-subheadline-ns tc mb3">Answer Randomizer</h1></a>
 			<div class="center mb3" id="choices">
@@ -75,12 +75,11 @@
 
 			<div id="results">
 
-				<div class="w-100 w-50-ns center flex" id="chart">
-					<!--<span>A <div class="dib ml2 w-10 .h2 purple bg-purple">|</div></span>-->
+				<div class="w-100 w-50-ns center flex mt4 " id="chart">
 					<div id="labels" class="f4"></div>
 					<div id="bars" style="flex-grow: 2;"></div>
 				</div>
-				<table class="f4 w-100 w-50-ns center" cellspacing="0">
+				<table class="f4 w-100 w-50-ns center mt2" cellspacing="0">
 					<thead id="tableheader">
 
 					</thead>
@@ -137,7 +136,7 @@
 		//Generating Answers
 		function generateAnswers() {
 			//Clear answers list
-			tableHeader.innerHTML = '<tr class="pa3"><th class="near-black tl ph3 pt3 pb1 bb bw2">Question</th><th class="near-black tl ph3 pt3 pb1 bb bw2">Answer</th></tr>'
+			tableHeader.innerHTML = '<tr class="pa3"><th class="near-black tl ph3 pt3 pb1 bb bw1">Question</th><th class="near-black tl ph3 pt3 pb1 bb bw1">Answer</th></tr>'
 			answersList.innerHTML = ''
 			resultsArray = [];
 			
@@ -184,6 +183,11 @@
 			var maxLabel = d3.max(chartArray, function(d) {return d.labelLength});
 			console.log(maxLabel);
 
+			var barsMaxWidth = parseFloat(d3.select("#bars").style("width").slice(0,-2)) - 15;
+
+			var barScale = d3.scaleLinear()
+								.domain([0, d3.max(chartArray, function(d) {return d.count})])
+								.range([0, barsMaxWidth]);
 			d3.select("#labels")
 				.attr("height", ((choices.length * 50) + "px"))
 				.selectAll("div")
@@ -200,7 +204,7 @@
 					.enter()
 						.append("div")
 							.attr("class", "bg-purple mt1 ml1 lh-solid")
-							.style("width", function(d) {return (d.count * 10) + "px"})
+							.style("width", function(d) {return barScale(d.count) + "px";})
 							.style("height", "1.25rem");
 						
 		}
