@@ -190,7 +190,7 @@
 					.data(chartArray)
 					.enter()
 						.append("div")
-							.attr("class", "mt1")
+							.attr("class", "mt1 lh-solid")
 							.text(function(d) {return d.choice;});
 
 			d3.select("#bars")
@@ -199,7 +199,7 @@
 					.data(chartArray)
 					.enter()
 						.append("div")
-							.attr("class", "bg-purple mt1 ml1")
+							.attr("class", "bg-purple mt1 ml1 lh-solid")
 							.style("width", function(d) {return (d.count * 10) + "px"})
 							.style("height", "1.25rem");
 						
