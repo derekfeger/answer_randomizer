@@ -75,8 +75,10 @@
 
 			<div id="results">
 
-				<div class="w-100 w-50-ns center" id="chart">
-					
+				<div class="w-100 w-50-ns center flex" id="chart">
+					<!--<span>A <div class="dib ml2 w-10 .h2 purple bg-purple">|</div></span>-->
+					<div id="labels" class="f4"></div>
+					<div id="bars" class=""></div>
 				</div>
 				<table class="f4 w-100 w-50-ns center" cellspacing="0">
 					<thead id="tableheader">
@@ -103,6 +105,8 @@
 		var tableHeader = document.getElementById('tableheader');
 		var answersList = document.getElementById('answers_list');
 		var resultsArray = [];
+		var chartArray = [];
+		var maxChoiceLength = 0;
 		
 		//Event Listeners
 		choicesButton.addEventListener('click', addChoice);
@@ -136,6 +140,13 @@
 			tableHeader.innerHTML = '<tr class="pa3"><th class="near-black tl ph3 pt3 pb1 bb bw2">Question</th><th class="near-black tl ph3 pt3 pb1 bb bw2">Answer</th></tr>'
 			answersList.innerHTML = ''
 			resultsArray = [];
+			
+			//Set up counts object
+			counts = {};
+			for (var i=0; i < choices.length; i++) {
+				var x = choices[i];
+				counts[x] = 0;
+			}
 
 			//Collect results
 			for (var i = 0; i < nQuestions.value; i++) {
@@ -149,19 +160,49 @@
 				var q_num = parseInt(qStart.value) + i
 				var resultObject = '<tr class="striped--near-white"><td class="pa3">' + q_num + '</td><td class="pa3">' + result + '</td></tr>';
 				answersList.innerHTML += resultObject;
+				counts[result] = (counts[result] += 1);
+				
 			}
 
 			//Make Chart
+			chartArray = [];
+			var sorted_choices = Object.keys(counts).sort(function (a, b) {return a.toString() - b.toString()});
+			for (var i = 0; i < sorted_choices.length; i++) {
+				var addItemChoice = sorted_choices[i];
+				var addItemCount = counts[addItemChoice];
+				chartArray.push({"choice": addItemChoice, "count": addItemCount, "labelLength": addItemChoice.toString().length});
+
+			}
+
+
+
 			makeChart();
 		}
 
 		//Charting answer distribution
 		function makeChart() {
-			d3.select("#chart").selectAll("div")
-			.data(resultsArray)
-			.enter()
-				.append("div")
-				.text("Test")
+			var maxLabel = d3.max(chartArray, function(d) {return d.labelLength});
+			console.log(maxLabel);
+
+			d3.select("#labels")
+				.attr("height", ((choices.length * 50) + "px"))
+				.selectAll("div")
+					.data(chartArray)
+					.enter()
+						.append("div")
+							.attr("class", "mt1")
+							.text(function(d) {return d.choice;});
+
+			d3.select("#bars")
+				.attr("height", ((choices.length * 50) + "px"))
+				.selectAll("div")
+					.data(chartArray)
+					.enter()
+						.append("div")
+							.attr("class", "bg-purple mt1 ml1")
+							.style("width", function(d) {return (d.count * 10) + "px"})
+							.style("height", "1.25rem");
+						
 		}
 		
 		
