@@ -52,7 +52,7 @@
 	
 	<body class="bg-washed-red sans-serif w-100">
 		<div class="w-80 center mt2">
-			<a class="no-underline" href="http://derekfeger.github.io/answer_randomizer"><h1 class="near-black f1 f-subheadline-ns tc mb3">Answer Randomizer</h1>
+			<a class="no-underline" href="http://derekfeger.github.io/answer_randomizer"><h1 class="near-black f1 f-subheadline-ns tc mb3">Answer Randomizer</h1></a>
 			<div class="center mb3" id="choices">
 				<div class="dib flex flex-wrap items-center justify-center" id="choices_list"></div>
 				<input class="db near-black bg-near-white b--near-black center w-50 w-20-ns tc f3 f2-ns mb3 mt2 bw1 br2 pa2" id="new_choice" type="text">
@@ -76,7 +76,7 @@
 			<div id="results">
 
 				<div class="w-100 w-50-ns center" id="chart">
-					There will be a chart here
+					
 				</div>
 				<table class="f4 w-100 w-50-ns center" cellspacing="0">
 					<thead id="tableheader">
@@ -109,6 +109,7 @@
 		newChoiceInput.addEventListener('keyup', addOnEnter);
 		generateButton.addEventListener('click', generateAnswers);
 		
+		//Adding Choices
 		function addOnEnter(e) {
 			if (e.key === 'Enter') {
 				addChoice();
@@ -129,6 +130,7 @@
 			newChoiceInput.value = ''
 		}
 		
+		//Generating Answers
 		function generateAnswers() {
 			//Clear answers list
 			tableHeader.innerHTML = '<tr class="pa3"><th class="near-black tl ph3 pt3 pb1 bb bw2">Question</th><th class="near-black tl ph3 pt3 pb1 bb bw2">Answer</th></tr>'
@@ -148,6 +150,18 @@
 				var resultObject = '<tr class="striped--near-white"><td class="pa3">' + q_num + '</td><td class="pa3">' + result + '</td></tr>';
 				answersList.innerHTML += resultObject;
 			}
+
+			//Make Chart
+			makeChart();
+		}
+
+		//Charting answer distribution
+		function makeChart() {
+			d3.select("#chart").selectAll("div")
+			.data(resultsArray)
+			.enter()
+				.append("div")
+				.text("Test")
 		}
 		
 		
