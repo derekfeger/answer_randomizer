@@ -50,7 +50,7 @@
 		</style>
 	</head>
 	
-	<body class="bg-washed-red sans-serif w-100 debug-grid">
+	<body class="bg-washed-red sans-serif w-100">
 		<div class="w-80 center mt2">
 			<a class="no-underline" href="http://derekfeger.github.io/answer_randomizer"><h1 class="near-black f1 f-subheadline-ns tc mb3">Answer Randomizer</h1></a>
 			<div class="center mb3" id="choices">
@@ -69,7 +69,7 @@
 				<input class="near-black bg-near-white b--near-black db center f3 f2-ns tc w-50 w-20-ns bw1 br2 pa2" id="starting_q" type="number" min="1" step="1" value="1" pattern="\d*" />
 			</div>
 
-			<a class="purple db mv4 center tc f4 f3-ns link grow ba br-pill bw1 ph2 pv2 black w-80 w-30-ns" id="generate" href="#results">Generate Answers</a>
+			<a class="purple db mv4 center tc f4 f3-ns link grow ba br-pill bw1 ph2 pv2 black w-80 w-30-ns" id="generate" href="#generate">Generate Answers</a>
 			
 			
 
@@ -180,6 +180,8 @@
 
 		//Charting answer distribution
 		function makeChart() {
+			
+
 			var maxLabel = d3.max(chartArray, function(d) {return d.labelLength});
 			console.log(maxLabel);
 
@@ -190,6 +192,7 @@
 								.range([0, barsMaxWidth]);
 			d3.select("#labels")
 				.attr("height", ((choices.length * 50) + "px"))
+				.html("")
 				.selectAll("div")
 					.data(chartArray)
 					.enter()
@@ -199,6 +202,7 @@
 
 			d3.select("#bars")
 				.attr("height", ((choices.length * 50) + "px"))
+				.html("")
 				.selectAll("div")
 					.data(chartArray)
 					.enter()
