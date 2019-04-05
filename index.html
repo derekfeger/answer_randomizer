@@ -172,18 +172,13 @@
 				chartArray.push({"choice": addItemChoice, "count": addItemCount, "labelLength": addItemChoice.toString().length});
 
 			}
-
-
-
+			
 			makeChart();
 		}
 
 		//Charting answer distribution
 		function makeChart() {
-			
-
 			var maxLabel = d3.max(chartArray, function(d) {return d.labelLength});
-			console.log(maxLabel);
 
 			var barsMaxWidth = parseFloat(d3.select("#bars").style("width").slice(0,-2)) - 15;
 
@@ -209,8 +204,7 @@
 						.append("div")
 							.attr("class", "bg-purple mt1 ml1 lh-solid")
 							.style("width", function(d) {return barScale(d.count) + "px";})
-							.style("height", "1.25rem");
-						
+							.style("height", "1.25rem");				
 		}
 		
 		
