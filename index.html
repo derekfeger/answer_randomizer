@@ -56,7 +56,7 @@
 			<div class="center mb3" id="choices">
 				<div class="dib flex flex-wrap items-center justify-center" id="choices_list"></div>
 				<input class="db near-black bg-near-white b--near-black center w-50 w-20-ns tc f3 f2-ns mb3 mt2 bw1 br2 pa2" id="new_choice" type="text">
-				<a class="purple db mb4 center tc f4 f3-ns link grow ba br-pill bw1 ph2 pv2 black w-80 w-30-ns" id="choices_button" href="#choices_button">Add a Choice</a>
+				<a class="purple db mb4 center tc f4 f3-ns link grow ba br-pill bw1 ph2 pv2 black w-80 w-30-ns" id="choices_button" href="javascript:void(0)">Add a Choice</a>
 			</div>
 			
 			<div class="db mv3">
@@ -69,7 +69,7 @@
 				<input class="near-black bg-near-white b--near-black db center f3 f2-ns tc w-50 w-20-ns bw1 br2 pa2" id="starting_q" type="number" min="1" step="1" value="1" pattern="\d*" />
 			</div>
 			
-			<a class="purple db mv4 center tc f4 f3-ns link grow ba br-pill bw1 ph2 pv2 black w-80 w-30-ns" id="generate" href="#generate">Generate Answers</a>
+			<a class="purple db mv4 center tc f4 f3-ns link grow ba br-pill bw1 ph2 pv2 black w-80 w-30-ns" id="generate" href="javascript:void(0)">Generate Answers</a>
 			
 			
 
@@ -131,6 +131,9 @@
 			
 			//Reset the input
 			newChoiceInput.value = ''
+
+			//Scrolls Button Back Into View
+			choicesButton.scrollIntoView();
 		}
 		
 		//Generating Answers
@@ -174,6 +177,8 @@
 			}
 			
 			makeChart();
+
+			generateButton.scrollIntoView();
 		}
 
 		//Charting answer distribution
